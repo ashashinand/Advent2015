@@ -9,6 +9,8 @@ namespace Advent2015.classes
     {
         //variable setup
         private int _iIncrementer;
+        private int _iPosition;
+        private bool _bHasBeenInBasement;
         private string _sInputString;
 
         //I know the input string is about 8k but whatever
@@ -29,6 +31,7 @@ namespace Advent2015.classes
         {
             //default variable initialisation
             _iIncrementer = 0;
+            _iPosition = 0;
             _sInputString = "";
         }
 
@@ -62,6 +65,17 @@ namespace Advent2015.classes
                     Console.WriteLine("Unknown character {0} entered!", cInput);
                     return -1;
                 }
+
+                _iPosition++;
+
+                if (!_bHasBeenInBasement && _iIncrementer == -1)
+                {
+                    Console.WriteLine("Entered floor -1 at position {0}", _iPosition);
+                    _bHasBeenInBasement = true;
+                }
+               
+
+                
             }
 
             //And finally, output
