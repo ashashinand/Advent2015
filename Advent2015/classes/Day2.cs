@@ -7,6 +7,7 @@ namespace Advent2015.classes
     class Day2 : IAdventProblem
     {
         private int _iWrappingPaperNeeded;
+        private int _iRibbonNeeded;
         private int _iSmallestSideArea;
         private string[] _aDimensionsList;
 
@@ -32,7 +33,8 @@ namespace Advent2015.classes
 
         public int Run()
         {
-            int temp = 0;
+            int tempWrappingPaper = 0;
+            int tempRibbon = 0;
             int[] dimensions = new int[3]; 
 
             Console.WriteLine("--- Day 2: I Was Told There Would Be No Math ---");
@@ -60,29 +62,40 @@ namespace Advent2015.classes
                     Console.WriteLine("Unknown number encountered in string '{0}'!", boxInput);
                 }
 
-                //could also do this better with an array (probably).
-                temp = dimensions[0] * dimensions[1];
-                if (temp < _iSmallestSideArea)
-                    _iSmallestSideArea = temp;
+                //could also do this better with an array of temp values (probably).
+                tempWrappingPaper = dimensions[0] * dimensions[1];
+                if (tempWrappingPaper < _iSmallestSideArea)
+                {
+                    _iSmallestSideArea = tempWrappingPaper;
+                    tempRibbon = (2 * dimensions[0]) + (2 * dimensions[1]);
+                }
 
-                _iWrappingPaperNeeded += temp * 2;
+                _iWrappingPaperNeeded += tempWrappingPaper * 2;
 
-                temp = dimensions[0] * dimensions[2];
-                if (temp < _iSmallestSideArea)
-                    _iSmallestSideArea = temp;
+                tempWrappingPaper = dimensions[0] * dimensions[2];
+                if (tempWrappingPaper < _iSmallestSideArea)
+                {
+                    _iSmallestSideArea = tempWrappingPaper;
+                    tempRibbon = (2 * dimensions[0]) + (2 * dimensions[2]);
+                }
 
-                _iWrappingPaperNeeded += temp * 2;
+                _iWrappingPaperNeeded += tempWrappingPaper * 2;
 
 
-                temp = dimensions[1] * dimensions[2];
-                if (temp < _iSmallestSideArea)
-                    _iSmallestSideArea = temp;
+                tempWrappingPaper = dimensions[1] * dimensions[2];
+                if (tempWrappingPaper < _iSmallestSideArea)
+                {
+                    _iSmallestSideArea = tempWrappingPaper;
+                    tempRibbon = (2 * dimensions[1]) + (2 * dimensions[2]);
+                }
 
-                _iWrappingPaperNeeded += temp * 2;
+                _iWrappingPaperNeeded += tempWrappingPaper * 2;
                 _iWrappingPaperNeeded += _iSmallestSideArea;
+                _iRibbonNeeded += tempRibbon + (dimensions[0] * dimensions[1] * dimensions[2]); 
                 
             }
             Console.WriteLine("Wrapping paper required: {0} ft^2", _iWrappingPaperNeeded);
+            Console.WriteLine("Ribbon required: {0} ft", _iRibbonNeeded);
             return 0;
         }
     }
