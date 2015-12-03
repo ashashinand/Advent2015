@@ -66,8 +66,10 @@ namespace Advent2015.classes
                     return -1;
                 }
 
+                //Processed one character, increment the counter!
                 _iPosition++;
 
+                //First time we've raided the basement?
                 if (!_bHasBeenInBasement && _iIncrementer == -1)
                 {
                     Console.WriteLine("Entered floor -1 at position {0}", _iPosition);

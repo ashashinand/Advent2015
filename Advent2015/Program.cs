@@ -51,6 +51,7 @@ namespace Advent2015
                     problem = null;
 
                     //Switch case because I dont like chaining if statements
+                    //Could also do this with an array. Dont like memory overflow though.
                     switch(iChoice)
                     {
                         //HAHA
@@ -61,6 +62,8 @@ namespace Advent2015
                             problem = new Day1();
                             break;
                         case 2:
+                            problem = new Day2();
+                            break;
                         case 3:
                         case 4:
                         case 5:
